@@ -4,11 +4,6 @@ const app = express();
 const port = 3000;
 const fruits = require("./models/fruits.js");
 
-// app.use((req, res, next) => {
-//   console.log("I run for all routes")
-//   next()
-// })
-
 app.use(express.urlencoded({extended: false}));
 
 // DEFINE OUR ROUTES

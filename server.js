@@ -30,6 +30,17 @@ app.delete("/fruits/:indexOfFruitsArray", (req, res) => {
   res.redirect("/fruits") //redirect back to index route
 });
 
+app.get("/fruits/:indexOfFruitsArray/edit", (req, res) => {
+  res.render(
+    "edit.ejs", //render views/edit.ejs
+    {
+      //pass in an object that contains
+      fruit: fruits[req.params.indexOfFruitsArray], //the fruit object
+      index: req.params.indexOfFruitsArray, //... and its index in the array
+    }
+  );
+});
+
 app.post("/fruits", (req, res) => {
   if(req.body.readyToEat === "on"){
     req.body.readyToEat = true;

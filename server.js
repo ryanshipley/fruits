@@ -41,6 +41,19 @@ app.get("/fruits/:indexOfFruitsArray/edit", (req, res) => {
   );
 });
 
+app.put("/fruits/:indexOfFruitsArray", (req, res) => {
+  //:indexOfFruitsArray is the index of our fruits array that we want to change
+  if (req.body.readyToEat === "on") {
+    //if checked, req.body.readyToEat is set to 'on'
+    req.body.readyToEat = true
+  } else {
+    //if not checked, req.body.readyToEat is undefined
+    req.body.readyToEat = false
+  }
+  fruits[req.params.indexOfFruitsArray] = req.body //in our fruits array, find the index that is specified in the url (:indexOfFruitsArray).  Set that element to the value of req.body (the input data)
+  res.redirect("/fruits") //redirect to the index page
+})
+
 app.post("/fruits", (req, res) => {
   if(req.body.readyToEat === "on"){
     req.body.readyToEat = true;
